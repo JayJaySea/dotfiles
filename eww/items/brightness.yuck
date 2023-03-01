@@ -1,0 +1,48 @@
+(defpoll br-current 
+  :initial 1
+  :interval "1s" 
+  "brightnessctl -m | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'"
+)
+
+(defvar br-update false)
+
+(defwidget brightness []
+  (eventbox
+    :onhover "eww update br-update=true"
+    :onhoverlost "eww update br-update=false"
+
+    (box
+      :height 40
+      :halign "end"
+      :valign "center" 
+      :class "control"
+      :space-evenly false
+
+      (revealer
+        :transition "slideright"				
+        :reveal br-update
+        :duration "550ms"
+
+
+        (scale    
+          :width 100
+          :height 10
+          :valign "center"
+          :class "br-scale"
+          :value br-current
+          :orientation "h"
+          :tooltip "Brightness: ${br-current}%" 
+          :max 101 
+          :min 0 
+          :onchange "brightnessctl set {}%" 
+        )
+      )
+
+      (button
+        :class "cn-brightness"
+        :width 30
+      )
+
+    )
+  )
+)

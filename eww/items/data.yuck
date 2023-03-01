@@ -1,0 +1,136 @@
+(deflisten cpu
+  :initial 0
+  `./scripts/getcpu`
+  )
+
+(defpoll memory
+  :initial 0
+  :interval "1s"
+  './scripts/getram'
+  )
+
+(defpoll battery
+  :initial 0
+  :interval "1s"
+  `./scripts/getbattery`
+  )
+
+(defpoll dt-time
+  :initial ""
+  :interval "1s"
+  `date "+%H:%M"`
+)
+
+(defwidget data []
+  (box
+    :height 40
+    :class "data"
+    :halign "center"
+    :valign "center" 
+    :space-evenly false
+    :spacing 10
+
+    (cpu-usage)
+    (mem-usage)
+    (battery-left)
+    (time-date)
+  )
+)
+
+
+(defwidget cpu-usage []
+  (overlay
+    (circular-progress
+      :class "cpu-usage"
+      :halign "center"
+      :value cpu
+      :width 25
+      :start-at 25
+      :clockwise true
+      :thickness 4
+    )
+    (button 
+      :class "cpu-usage-btn"
+      :halign "center"
+      :valign "center" 
+    "")
+  )
+)
+
+(defwidget mem-usage []
+  (overlay
+    (circular-progress
+      :class "mem-usage"
+      :value memory
+      :width 25
+      :start-at 25
+      :clockwise true
+      :thickness 4
+    )
+    (button 
+      :class "mem-usage-btn"
+      :halign "center"
+      :valign "center" 
+    "")
+  )
+)
+
+
+(defwidget battery-left []
+  (overlay
+    (circular-progress
+      :class "battery-left"
+      :value battery
+      :width 25
+      :start-at 25
+      :clockwise true
+      :thickness 4
+    )
+    (button 
+      :class "battery-left-btn"
+      :halign "center"
+      :valign "center" 
+    "")
+  )
+)
+
+(defwidget time-date []
+  (button
+    :class "time"
+    :onclick "./scripts/popup calendar"
+    dt-time
+  )
+)
+
+
+
+(defwindow calendar
+	:geometry (geometry :x "45%" 
+						:y "5%" 
+						:width "270px" 
+						:height "60px"
+              )
+(cal))
+
+(defpoll calendar_day :interval "10h"
+    "date '+%d'")
+(defpoll calendar_month :interval "10h"
+    "date '+%m'")
+(defpoll calendar_year :interval "10h"
+    "date '+%Y'")
+
+(defwidget cal []
+	(box 
+      :class "cal-box" 
+      :orientation "v"
+	(box 
+      :class "cal-inner-box"
+      (calendar 
+        :class "cal" 
+        :day calendar_day 
+        :month calendar_month 
+        :year calendar_year
+      )
+    )
+  )
+)

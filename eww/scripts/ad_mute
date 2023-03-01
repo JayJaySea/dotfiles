@@ -1,0 +1,15 @@
+#!/bin/sh
+
+main() {
+    result=0
+
+    output=`pactl get-sink-mute 0`
+    output_split=($output)
+    mute=${output_split[1]}
+
+    echo $mute
+
+    exit $result
+}
+
+main $@

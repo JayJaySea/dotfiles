@@ -1,0 +1,11 @@
+#!/bin/sh
+
+main() {
+    result=0
+
+    awesome-client "local awful = require('awful') awful.tag.viewprev(awful.screen.focused())"
+
+    exit $result
+}
+
+main $@

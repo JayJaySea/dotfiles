@@ -1,0 +1,66 @@
+(defvar pw-revealed false)
+
+
+; Credits to rxyhn, as this below is almost a ctrl-c ctrl-v, just mildly customized
+(defwidget power []
+  (eventbox	
+    :onhover "eww update pw-revealed=true"	
+    :onhoverlost "eww update pw-revealed=false" 
+    (box		
+      :class "control"
+      :height 40
+      :halign "end"
+      :valign "center" 
+      :space-evenly false
+
+      (revealer	
+        :transition "slideleft"				
+        :reveal pw-revealed			 
+        :duration "550ms"
+        (box		
+          :space-evenly "false"
+
+          (button   	
+            :width 30
+            :height 20
+            :class "cn-wm-restart"  			
+            :tooltip "WM Restart" 
+            :onclick "awesome-client 'awesome.restart()'" 
+          )
+
+          (button		
+            :width 30
+            :height 20
+            :class "cn-reboot"					
+            :tooltip "Reboot"		 
+            :onclick "reboot"
+          )
+
+          (button		
+            :width 30
+            :height 20
+            :class "cn-logout" 				
+            :tooltip "Logout" 		 
+            :onclick "killall xinit; logout"
+          )
+
+          (button		
+            :width 30
+            :height 20
+            :class "cn-lockscreen" 				
+            :tooltip "Lock Screen"	 
+            :onclick "betterlockscreen -l"
+          )
+        )
+      )
+
+      (button		
+        :width 30
+        :height 20
+        :class "cn-poweroff"					
+        :tooltip "Shutdown"		 
+        :onclick "poweroff"
+      )
+    )
+  )
+)

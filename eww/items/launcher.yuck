@@ -1,0 +1,38 @@
+(defvar lc-reveal false)
+(defvar lc-not-ready true)
+
+(defpoll lc-items 
+  :initial "(box)"
+  :interval "1s"
+  :run-while ws_not_ready
+
+  `./scripts/lc-items.py`
+)
+
+(defwidget launcher []
+  (eventbox
+    :onhover "eww update lc-reveal=true"
+    :onhoverlost "eww update lc-reveal=false"
+
+    (box
+      :height 40
+      :halign "end"
+      :valign "center" 
+      :class "control"
+      :space-evenly false
+
+      (revealer	
+        :transition "slideleft"				
+        :reveal lc-reveal
+        :duration "550ms"
+
+        (literal :content lc-items)
+      )
+
+      (button
+        :class "rocket"
+        :width 30
+      )
+    )
+  )
+)

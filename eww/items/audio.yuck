@@ -1,0 +1,68 @@
+(defpoll ad-current 
+  :initial 1
+  :interval "50ms" 
+  `amixer -D pulse sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%'`
+)
+
+(defpoll ad-mute 
+  :initial "no"
+  :interval "50ms"
+  `./scripts/ad_mute`)
+
+(defvar ad-update false)
+
+(defwidget audio []
+  (eventbox
+    :onhover "eww update ad-update=true"
+    :onhoverlost "eww update ad-update=false"
+
+    (box
+      :height 40
+      :halign "end"
+      :valign "center" 
+      :class "control"
+      :space-evenly false
+
+      (revealer
+        :transition "slideright"				
+        :reveal ad-update
+        :duration "550ms"
+
+
+        (scale    
+          :width 100
+          :height 10
+          :valign "center"
+          :class {
+            ad-mute == "yes" ?
+            "ad-scale-muted" :
+            "ad-scale"
+          }
+          :value ad-current
+          :orientation "h"
+          :tooltip "Volume: ${ad-current}%" 
+          :max 101 
+          :min 0 
+          :onchange "amixer -D pulse sset Master {}%" 
+        )
+      )
+
+      (button
+        :class {
+          ad-mute == "yes" ?
+          "audio-mute" :
+          ad-current >= 66 ?
+          "audio-high" :
+          ad-current >= 33 ?
+          "audio-medium" :
+          ad-current > 0 ?
+          "audio-low" :
+          "audio-mute"
+        }
+        :width 30
+        :onclick "pactl set-sink-mute 0 toggle"
+      )
+
+    )
+  )
+)

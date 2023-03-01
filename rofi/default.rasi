@@ -1,0 +1,110 @@
+configuration {
+	font: "Envy Code R 10";
+	width: 30;
+	line-margin: 10;
+	lines: 6;
+	columns: 2;
+
+    display-ssh:    "";
+    display-run:    "";
+    display-drun:   "";
+    display-window: "";
+    display-combi:  "";
+    show-icons:     true;
+}
+
+* {
+	background: #071a35;
+	main: #8bcd5b;
+
+    foreground:  #abb2bf;
+    background-color:  transparent;
+    highlight: underline bold #eceff4;
+    transparent: rgba(3,5,10,0);
+}
+
+window {
+    location: center;
+    anchor:   center;
+    transparency: "screenshot";
+    padding: 10px;
+    border:  0px;
+
+    spacing: 0;
+    children:  [mainbox];
+    orientation: horizontal;
+}
+
+mainbox {
+    spacing: 0;
+    children: [ inputbar, message, listview ];
+}
+
+message {
+    padding: 5;
+    border-color: @foreground;
+    border:  0px 2px 2px 2px;
+    background-color: @background;
+}
+
+inputbar {
+    color: @foreground;
+    padding: 11px;
+    background-color: @background;
+
+    border: 2px;
+    border-radius:  6px 6px 0px 0px;
+    border-color: @main;
+}
+
+entry, prompt, case-indicator {
+    text-font: inherit;
+    text-color:inherit;
+}
+
+prompt {
+    margin: 0px 0.3em 0em 0em ;
+}
+
+listview {
+    padding: 8px;
+    border-radius: 0px 0px 6px 6px;
+    border-color: @main;
+    border: 0px 2px 2px 2px;
+    background-color: @background;
+    dynamic: false;
+}
+
+element {
+    padding: 3px;
+    vertical-align: 0.5;
+    border-radius: 4px;
+    background-color: transparent;
+    color: @foreground;
+    text-color: rgb(216, 222, 233);
+}
+
+element selected.normal {
+	background-color: @main;
+	text-color: @background;
+}
+
+element-text, element-icon {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
+button {
+    padding: 6px;
+    color: @foreground;
+    horizontal-align: 0.5;
+
+    border: 2px 0px 2px 2px;
+    border-radius: 4px 0px 0px 4px;
+    border-color: @foreground;
+}
+
+button selected normal {
+    border: 2px 0px 2px 2px;
+    border-color: @foreground;
+}

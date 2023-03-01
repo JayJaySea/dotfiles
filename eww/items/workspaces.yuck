@@ -1,0 +1,33 @@
+(defvar ws_not_ready true)
+
+(defpoll ws_all
+  :interval "1s"
+  :initial "(box)"
+  :run-while ws_not_ready
+  `./scripts/ws_all`
+)
+
+(deflisten ws_current
+  :initial "0"
+  `xprop -spy -root _NET_CURRENT_DESKTOP`
+  )
+
+(defpoll ws_busy
+  :interval "50ms"
+  :initial ""
+  `./scripts/ws_busy`
+)
+
+
+(defwidget workspaces []
+  (eventbox
+    :onscroll `./scripts/ws_{}`
+    (literal 
+      :class "workspaces"
+      :height 40
+      :halign "start"
+      :valign "center" 
+      :content ws_all
+    )
+  )
+)

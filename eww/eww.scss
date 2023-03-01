@@ -1,0 +1,263 @@
+$background: #162643;
+$md-background: #071a35;
+$foreground: #abb2bf;
+$cyan: #56b6c2;
+$yellow: #d19a66;
+$red: #e06c75;
+$magenta: #c678dd;
+$blue: #61afef;
+$green: #8bcd5b;
+
+* {
+   all: unset;
+}
+
+.workspaces{
+  all: unset;
+  padding:10px;
+  background-color: $md-background;
+  color: $foreground;
+  border-radius: 20;
+}
+
+.control {
+  all: unset;
+  background-color: $md-background;
+  padding: 5px;
+  margin-left: 10px;
+  color: $foreground;
+  border-radius: 20;
+}
+
+.data {
+  all: unset;
+  background-color: $md-background;
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: 10px;
+  color: $foreground;
+  border-radius: 20;
+}
+
+.top-panel{
+  all: unset;
+  background-color: $background;
+  color: $foreground;
+  border-radius: 20;
+}
+
+.work-top-panel{
+  all: unset;
+  background-color: $background;
+  color: $foreground;
+}
+
+.image {
+  padding:5px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+button {
+  all: unset;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+button.ws-active {
+  background-image: url("/home/xkali/.config/eww/icons/active.png");
+  background-size: 20px 20px;
+}
+
+button.ws-inactive {
+  background-image: url("/home/xkali/.config/eww/icons/inactive.png");
+  background-size: 20px 20px;
+}
+
+button.ws-busy {
+  background-image: url("/home/xkali/.config/eww/icons/busy.png");
+  background-size: 20px 20px;
+}
+
+button.cn-poweroff {
+  background-image: url("/home/xkali/.config/eww/icons/shutdown.png");
+  background-size: 20px 20px;
+}
+
+button.cn-lockscreen {
+  background-image: url("/home/xkali/.config/eww/icons/lock.png");
+  background-size: 20px 20px;
+}
+
+button.cn-logout {
+  background-image: url("/home/xkali/.config/eww/icons/logout.png");
+  background-size: 20px 20px;
+}
+
+button.cn-reboot {
+  background-image: url("/home/xkali/.config/eww/icons/reboot.png");
+  background-size: 20px 20px;
+}
+
+button.cn-wm-restart {
+  background-image: url("/home/xkali/.config/eww/icons/restart.png");
+  background-size: 20px 20px;
+}
+
+button.audio-high {
+  background-image: url("/home/xkali/.config/eww/icons/audio-high.png");
+  background-size: 20px 20px;
+}
+
+button.audio-medium {
+  background-image: url("/home/xkali/.config/eww/icons/audio-medium.png");
+  background-size: 20px 20px;
+}
+
+button.audio-low {
+  background-image: url("/home/xkali/.config/eww/icons/audio-low.png");
+  background-size: 20px 20px;
+}
+
+button.audio-mute {
+  background-image: url("/home/xkali/.config/eww/icons/audio-mute.png");
+  background-size: 20px 20px;
+}
+
+
+button.cn-brightness {
+  background-image: url("/home/xkali/.config/eww/icons/brightness.png");
+  background-size: 20px 20px;
+}
+
+button.wifi {
+  background-image: url("/home/xkali/.config/eww/icons/wifi.png");
+  background-size: 22px 18px;
+}
+
+button.wired {
+  background-image: url("/home/xkali/.config/eww/icons/wired.png");
+  background-size: 22px 22px;
+}
+
+button.no-conn {
+  background-image: url("/home/xkali/.config/eww/icons/no-conn.png");
+  background-size: 20px 20px;
+}
+
+button.rocket {
+  background-image: url("/home/xkali/.config/eww/icons/launch.png");
+  background-size: 20px 20px;
+}
+
+scale trough {
+  all: unset;
+  background-color: $background;
+  border-radius: 5px;
+  min-height: 10px;
+  min-width: 80px;
+  margin: 5px;
+}
+
+scale.ad-scale trough highlight {
+  background-color: $cyan;
+  border-radius: 5px;
+}
+
+scale.ad-scale-muted trough highlight {
+  background-color: $red;
+  border-radius: 5px;
+}
+
+scale.br-scale trough highlight {
+  background-color: $yellow;
+  border-radius: 5px;
+}
+
+circular-progress {
+  all: unset;
+}
+
+
+.mem-usage {
+  color: $magenta;
+  background-color: $background;
+}
+
+.cpu-usage {
+  color: $blue;
+  background-color: $background;
+}
+
+.battery-left {
+  color: $yellow;
+  background-color: $background;
+}
+
+.mem-usage-btn {
+  color: $magenta;
+}
+
+.cpu-usage-btn {
+  color: $blue;
+}
+
+.battery-left-btn {
+  color: $yellow;
+}
+
+.time {
+  all:unset;
+  background-color: $md-background;
+  padding-top: 5px;
+  color: $foreground;
+  font-size: 20px;
+  font-family: "Orbitron", "Monospace";
+}
+
+.cal-box {
+  background-color: $md-background;
+  font-family: Comic Mono;
+  font-size: 1em;
+  font-weight: bold;
+  border-radius: 20;
+  border-width: 2px;
+  border-style: solid;
+  border-color: $foreground;
+
+  .cal-inner-box {
+      padding: 1rem 1rem .2rem;
+
+      .cal {
+          &.highlight {
+              padding: 10rem;
+          }
+
+          padding: .8rem .25rem 0rem;
+          margin-left: 10px;
+      }
+  }
+}
+
+calendar:selected {
+  color: $blue;
+}
+
+calendar.header {
+color: $blue;
+font-weight: bold;
+}
+
+calendar.button {
+color: $magenta;
+}
+
+calendar.highlight {
+color: $green;
+font-weight: bold;
+}
+
+calendar:indeterminate {
+color: $background;
+}

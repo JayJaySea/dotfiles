@@ -1,0 +1,31 @@
+(defpoll nt-wired
+  :interval "1s"
+  :initial "down"
+  `cat /sys/class/net/e*/operstate`)
+
+(defpoll nt-wifi
+  :interval "1s"
+  :initial "down"
+  `cat /sys/class/net/w*/operstate`)
+
+(defwidget network []
+  (box
+    :height 40
+    :halign "end"
+    :valign "center" 
+    :class "control"
+    :space-evenly false
+
+    (button
+      :class {
+        nt-wired == "up" ?
+        "wired" :
+        nt-wifi == "up" ?
+        "wifi" :
+        "no-conn"
+      }
+      :width 30
+      :onclick "alacritty -e nmtui &"
+    )
+  )
+)

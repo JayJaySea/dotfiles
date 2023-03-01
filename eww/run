@@ -1,0 +1,13 @@
+#!/bin/sh
+
+main() {
+    result=0
+
+    eww close top-panel
+    eww close work-top-panel
+    eww open top-panel
+
+    exit $result
+}
+
+main $@

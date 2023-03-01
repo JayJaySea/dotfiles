@@ -1,0 +1,14 @@
+(defwidget audio []
+  (box
+    :height 40
+    :halign "end"
+    :valign "center" 
+    :class "audio"
+    :space-evenly false
+
+    (button
+      :class "cn-audio"
+      :width 30
+    )
+  )
+)

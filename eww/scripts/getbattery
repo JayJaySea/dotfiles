@@ -1,0 +1,15 @@
+#!/bin/sh
+
+main() {
+    result=0
+
+    output=`upower -i /org/freedesktop/UPower/devices/battery_BAT1 | grep percentage`
+
+    output_arr=($output)
+    battery=${output_arr[1]}
+    echo ${battery%?}
+
+    exit $result
+}
+
+main $@

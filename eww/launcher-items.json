@@ -1,0 +1,14 @@
+[
+	{
+		"launch-path": "/usr/bin/firefox &",
+		"icon-path": "/home/xkali/.config/eww/icons/firefox.png"
+	},
+	{
+		"launch-path": "/usr/bin/alacritty &",
+		"icon-path": "/home/xkali/.config/eww/icons/terminal.png"
+	},
+	{
+		"launch-path": "/usr/bin/nemo &",
+		"icon-path": "/home/xkali/.config/eww/icons/folder.png"
+	}
+]

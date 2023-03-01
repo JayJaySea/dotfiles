@@ -1,0 +1,44 @@
+#/bin/sh
+
+main() {
+     result=0
+ 
+     # We want to get list of indexes for workspaces, that are "busy" 
+     # (have more than zero clients open). Note that your bar will count
+     # as a client too, but only for the first tag. That's why we implement
+     # second if statement just for this case.
+     
+     output=`
+     awesome-client "
+     local awful = require('awful')
+     local count = #awful.screen.focused().tags
+     local busy = ' '
+ 
+     clients = #awful.screen.focused().tags[1].clients(awful.screen.focused().tags[1])
+     if clients > 1 then
+         busy = busy .. '1 '
+     end
+ 
+ 	for i=2, count do
+         clients = #awful.screen.focused().tags[i].clients(awful.screen.focused().tags[i])
+         if clients > 0 then
+             busy = busy .. i .. ' '
+         end
+ 	end
+ 
+     return busy
+     "`
+ 
+     # Since awesome-client outputs in format <type> <data>,
+     # we have to do some parsing before passing data
+     # for our defpoll variable to catch via echo
+     output_arr=($output)
+     len=${#output_arr}
+     busy=${output_arr[@]:2}
+ 
+     echo " $busy "
+ 
+     exit $result
+}
+
+main $@

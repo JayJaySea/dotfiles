@@ -1,0 +1,52 @@
+#!/bin/sh
+
+main() {
+    result=0
+
+
+    # output=`awesome-client "local awful = require('awful') return #awful.screen.focused().tags"`
+    # output_split=($output)
+
+    # count=${output_split[1]}
+    count=10
+    buttons='
+    (box
+      :space-evenly true
+      :spacing 20
+      :valign "center"
+      :halign "center"
+    '
+
+    for (( i=1; i<=$count; ++i ))
+    do
+        switch_ws=" 
+          local awful = require('awful') 
+          local screen = awful.screen.focused() 
+          local tag = screen.tags[$i] 
+          if tag then 
+            tag:view_only() 
+          end
+        "
+
+        button='(button 
+          :class {arraylength(search(ws_current, '$i-1')) > 0 ? "ws-active" : arraylength(search(ws_busy, " '$i' ")) > 0 ? "ws-busy" : "ws-inactive"} 
+          :width 20 
+          :height 20 
+          :valign "center" 
+          :onclick "awesome-client \"'$switch_ws'\""
+        )
+        '
+
+        buttons+=$button
+    done
+
+    buttons+=')' 
+
+    echo $buttons
+
+    eww update ws_not_ready=false
+
+    exit $result
+}
+
+main $@

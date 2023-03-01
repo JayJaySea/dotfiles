@@ -1,0 +1,14 @@
+#!/bin/sh
+
+main() {
+    result=0
+
+    current=`awesome-client "local awful = require('awful') return awful.screen.focused().selected_tag.index"`
+
+    content=($current)
+    echo ${content[1]}
+
+    exit $result
+}
+
+main $@
