@@ -4,11 +4,10 @@ main() {
     result=0
 
 
-    # output=`awesome-client "local awful = require('awful') return #awful.screen.focused().tags"`
-    # output_split=($output)
+    output=`awesome-client "local awful = require('awful') return #awful.screen.focused().tags"`
+    output_split=($output)
 
-    # count=${output_split[1]}
-    count=10
+    count=${output_split[1]}
     buttons='
     (box
       :space-evenly true
