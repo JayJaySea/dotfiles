@@ -45,10 +45,10 @@ eww open top-panel
 You can add items to launcher by providing new record in launcher-items.json file in eww directory:
 
 ```
-  {
-		"launch-path": "/path/to/executable &",
-		"icon-path": "/path/to/icon"
-	}
+{
+	"launch-path": "/path/to/executable &",
+	"icon-path": "/path/to/icon"
+}
 ```
 
 Make sure that icon is 20px/20px.
